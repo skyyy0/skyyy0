@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" width="100%" height="100%">
+  <defs>
+    <!-- Fonts -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&amp;family=Orbitron:wght@700;900&amp;display=swap');
+      
+      .bg { fill: #050a15; }
+      .grid { stroke: rgba(0, 240, 255, 0.1); stroke-width: 1; }
+      .title { font-family: 'Orbitron', sans-serif; font-size: 110px; font-weight: 900; fill: #ffffff; }
+      .glitch-cyan { fill: #00f0ff; mix-blend-mode: screen; animation: glitch-anim-1 2.5s infinite linear alternate-reverse; }
+      .glitch-blue { fill: #0a192f; mix-blend-mode: screen; animation: glitch-anim-2 3s infinite linear alternate-reverse; }
+      .subtitle { font-family: 'Fira Code', monospace; font-size: 22px; font-weight: 500; fill: #00f0ff; }
+      .description { font-family: 'Fira Code', monospace; font-size: 14px; fill: #8b949e; }
+      .hud { stroke: #00f0ff; stroke-width: 2; fill: none; opacity: 0.7; }
+      
+      /* Typing Animation */
+      .typing-text { font-family: 'Fira Code', monospace; font-size: 20px; font-weight: 700; fill: #c8d1d9; opacity: 0; animation: type-cycle 15s infinite; }
+      .type-1 { animation-delay: 0s; }
+      .type-2 { animation-delay: 3s; }
+      .type-3 { animation-delay: 6s; }
+      .type-4 { animation-delay: 9s; }
+      .type-5 { animation-delay: 12s; }
+      
+      @keyframes type-cycle {
+        0%, 15% { opacity: 1; }
+        20%, 100% { opacity: 0; }
+      }
+
+      /* Glitch Animations */
+      @keyframes glitch-anim-1 {
+        0% { transform: translate(0); }
+        20% { transform: translate(-3px, 1px); }
+        40% { transform: translate(-1px, -2px); }
+        60% { transform: translate(3px, 1px); }
+        80% { transform: translate(1px, -1px); }
+        100% { transform: translate(0); }
+      }
+      @keyframes glitch-anim-2 {
+        0% { transform: translate(0); }
+        20% { transform: translate(3px, -1px); }
+        40% { transform: translate(1px, 2px); }
+        60% { transform: translate(-3px, -1px); }
+        80% { transform: translate(-1px, 1px); }
+        100% { transform: translate(0); }
+      }
+
+      /* Scanline */
+      .scanline {
+        width: 100%; height: 50px; fill: url(#scan-grad);
+        animation: scan 4s linear infinite; opacity: 0.15;
+      }
+      @keyframes scan {
+        0% { transform: translateY(-50px); }
+        100% { transform: translateY(400px); }
+      }
+    </style>
+
+    <!-- Patterns & Gradients -->
+    <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" class="grid" />
+    </pattern>
+    <linearGradient id="scan-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0" />
+      <stop offset="50%" stop-color="#00f0ff" stop-opacity="1" />
+      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" class="bg" />
+  <rect width="100%" height="100%" fill="url(#grid-pattern)" />
+
+  <!-- Particles -->
+  <g opacity="0.4">
+    <circle cx="150" cy="80" r="2" fill="#00f0ff"><animate attributeName="cy" values="80;60;80" dur="4s" infinite="true"/></circle>
+    <circle cx="850" cy="300" r="3" fill="#00f0ff"><animate attributeName="cy" values="300;320;300" dur="5s" infinite="true"/></circle>
+    <circle cx="900" cy="100" r="1.5" fill="#ffffff"><animate attributeName="opacity" values="0;1;0" dur="3s" infinite="true"/></circle>
+    <circle cx="100" cy="350" r="2.5" fill="#ffffff"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" infinite="true"/></circle>
+  </g>
+
+  <!-- HUD Elements -->
+  <path d="M 30 30 L 70 30 M 30 30 L 30 70" class="hud" />
+  <path d="M 970 30 L 930 30 M 970 30 L 970 70" class="hud" />
+  <path d="M 30 370 L 70 370 M 30 370 L 30 330" class="hud" />
+  <path d="M 970 370 L 930 370 M 970 370 L 970 330" class="hud" />
+  <text x="40" y="360" font-family="monospace" font-size="10" fill="#00f0ff" opacity="0.6">SYS.OP.OK</text>
+  <text x="910" y="360" font-family="monospace" font-size="10" fill="#00f0ff" opacity="0.6">V.1.0.9</text>
+
+  <!-- Main Content -->
+  <g transform="translate(500, 180)" text-anchor="middle">
+    <!-- Glitch Layers -->
+    <text x="-4" y="0" class="title glitch-cyan">SKYYY0</text>
+    <text x="4" y="0" class="title glitch-blue">SKYYY0</text>
+    <text x="0" y="0" class="title" filter="url(#glow)">SKYYY0</text>
+    
+    <text x="0" y="50" class="subtitle">Full Stack Developer</text>
+    
+    <!-- Animated Typing Effect -->
+    <g transform="translate(0, 90)">
+      <text class="typing-text type-1">&gt; Full Stack Developer_</text>
+      <text class="typing-text type-2">&gt; Building Modern Web Applications_</text>
+      <text class="typing-text type-3">&gt; Node.js • TypeScript • Python_</text>
+      <text class="typing-text type-4">&gt; Open Source Enthusiast_</text>
+      <text class="typing-text type-5">&gt; Turning Ideas Into Reality_</text>
+    </g>
+
+    <text x="0" y="130" class="description">Building scalable web applications, APIs, automation and AI-powered solutions.</text>
+  </g>
+
+  <!-- Scanline Overlay -->
+  <rect class="scanline" x="0" y="0" />
+</svg>
+
